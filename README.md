@@ -53,13 +53,13 @@
 |        | [预处理说明](https://github.com/Iamctb/EasyDeepRecommand/blob/main/DataProcess/criteo/readme_about_criteo_preprocess.md) |                                                              |          |
 
 
-
 ## Model_Zoo
 
 | No.  | Publication | Model    | Blog                                                         | Paper                                                        | Version |
 | ---- | ----------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------- |
-| 1    | DLRS'16     | WideDeep | [📝WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅ torch   |
-| 2    | ADKDD'17    | DCN      | [📝DCN](https://blog.csdn.net/qq_41915623/article/details/145951277?fromshare=blogdetail&sharetype=blogdetail&sharerId=145951277&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link)                                                             | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅ torch   |
+| 1    | DLRS'16     | WideDeep | [白话WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅ torch  |
+| 2    | ADKDD'17    | DCN      |                                                              | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅ torch  |
+| 3    | WWW'21      | DCV-v2   |                                                              | [DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems](https://arxiv.org/abs/2008.13535), **Google** | ✅ torch  |
 
 
 
