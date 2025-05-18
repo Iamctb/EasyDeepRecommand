@@ -39,7 +39,7 @@ class CrossInteraction(nn.Module):
             input_dim: 输入维度
         """
         super(CrossInteraction, self).__init__()
-        self.w = nn.Linear(input_dim, 1, bias=False)
+        self.w = nn.Linear(input_dim, 1, bias=False)     # 权重矩阵, 生成(1, input_dim)的参数矩阵 W
         self.b = nn.Parameter(torch.rand(input_dim))
     
     def forward(self, X_i, X_0):
@@ -50,7 +50,7 @@ class CrossInteraction(nn.Module):
         Returns:
             out: 本层的输出, shape=(batch_size, input_dim)
         """
-        out = self.w(X_i) * X_0 + self.b
+        out = self.w(X_i) * X_0 + self.b   # self.w(X_i) * X_0 = torch.matmul(X_i, W^T) * X_0 = torch.matmul((batch_size, input_dim), (input_dim, 1 )) * (batch_size, input_dim) = (batch_size, input_dim), 其中matmul表示矩阵乘法， *表示对应逐元素相乘
         return out
 
 
@@ -94,7 +94,7 @@ class DCN(nn.Module):
             model_config["hidden_layers"].insert(0, self.input_dim)   # 因为第一个线性层的input_dim要等于样本长度
         if model_config['hidden_layers'][-1] != 1:
             model_config['hidden_layers'].append(1)
-        self.hidden_layers = model_config['hidden_layers']
+        self.hidden_layers = model_config['hidden_layers']            # 深度网络的层数 
         self.num_cross_layers = model_config['num_cross_layers']
         self.dropout_p = model_config['dropout_p']
 

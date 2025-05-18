@@ -1,0 +1,18 @@
+# DCNv2模型配置
+DCNv2:
+  model_name: "DCNv2"
+  model_save_dir: "/ModelZoo/DCNv2/DCNv2_torch/checkpoints/"  # 模型保存路径
+  batch_size: 256                 # 批量大小
+  epoch: 1                        # 训练轮次
+  loss: "bce"                     # 损失函数
+  optimizer: "adam"               # 优化器
+  learning_rate: 0.001            # 学习率
+  model_structure: "parallel"     # 可选：crossnet_only: 仅使用crossnet; stacked: 串行，先crossNet，再Deep; parallel: 并行, Deep和CrossNet并
+  
+  use_low_rank_and_moe: False     # CrossNet是否使用低秩混合
+  num_cross_layers: 3             # Cross层数量
+  num_experts: 4                  # CrossNet中专家数量
+  low_rank: 32                    # CrossNet中低秩 
+
+  hidden_layers: [128, 64, 32]    # Deep层隐藏层维度
+  dropout_p: 0.0                  # Deep层使用dropout的参数p,表按概率p丢弃神经元

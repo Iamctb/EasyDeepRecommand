@@ -1,0 +1,10 @@
+WideDeep:
+  model_name: "WideDeep"
+  model_save_dir: "/ModelZoo/WideDeep/WideDeep_torch/checkpoints/"  # 模型保存路径  
+  batch_size: 256                 # 批量大小
+  epoch: 1                        # 训练轮次
+  loss: "bce"                     # 损失函数
+  optimizer: "adam"               # 优化器
+  learning_rate: 0.001            # 学习率
+  hidden_layers: [128, 64, 32]    # Deep层的隐藏层单元数
+  dropout_p: 0.0                  # 使用dropout的参数p,表按概率p丢弃神经元

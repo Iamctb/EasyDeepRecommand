@@ -1,8 +1,0 @@
-{
-    "dataset_name": "criteo",
-    "data_format": "npz",
-    "feature_map": "/Dataset/criteo/feature_map.json",
-    "train_data": "/Dataset/criteo/process_sample.npz",
-    "valid_data": "/Dataset/criteo/process_sample.npz",
-    "test_data": "/Dataset/criteo/process_sample.npz"
-}

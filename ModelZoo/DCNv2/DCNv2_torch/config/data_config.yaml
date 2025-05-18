@@ -1,0 +1,8 @@
+# Criteo数据集配置
+Criteo_dataset:
+  dataset_name: "criteo"
+  data_format: "npz"                                  # 数据格式
+  feature_map: "/Dataset/criteo/feature_map.json"     # criteo对应的feature_map, 里面记录了criteo各特征的类型, 特征的维度, 特征的词表大小
+  train_data: "/Dataset/criteo/process_sample.npz"    # criteo对应的训练数据
+  valid_data: "/Dataset/criteo/process_sample.npz"    # criteo对应的验证数据
+  test_data: "/Dataset/criteo/process_sample.npz"     # criteo对应的测试数据

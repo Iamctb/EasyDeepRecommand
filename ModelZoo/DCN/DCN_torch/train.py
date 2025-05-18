@@ -14,6 +14,7 @@ import numpy as np
 from tqdm import tqdm
 from datetime import datetime
 import random
+import yaml
 
 def set_seed(seed):
     """
@@ -149,13 +150,13 @@ if __name__ == '__main__':
     set_seed(2024)                                                              # 固定随机种子，用于代码复现
     
     print("Step1: 获取配置各项配置 ...")
-    data_config_path = os.path.join(current_dir, "config/data_config.json")     # 通过相对路径获取数据配置文件
-    model_config_path = os.path.join(current_dir, "config/model_config.json")   # 通过相对路径获取模型配置文件
-    with open(data_config_path, 'r') as file:   
-        data_config = json.load(file)
-
-    with open(model_config_path, 'r') as file:
-        model_config = json.load(file)
+     # 获取yaml配置文件
+    data_config_path = os.path.join(current_dir, "config/data_config.yaml")     # 通过相对路径获取数据配置文件
+    model_config_path = os.path.join(current_dir, "config/model_config.yaml")   # 通过相对路径获取模型配置文件
+    with open(data_config_path, 'r', encoding='utf-8') as file:   
+        data_config = yaml.safe_load(file)['Criteo_dataset']                    # 获取Criteo_dataset下的配置
+    with open(model_config_path, 'r', encoding='utf-8') as file:
+        model_config = yaml.safe_load(file)['DCN']                              # 获取DCN下的配置
 
     # 获取配置中的路径，和项目路径合并后重新赋值，防止因为路径导致程序出错
     data_config['feature_map'] = project_root + data_config['feature_map']
@@ -172,11 +173,12 @@ if __name__ == '__main__':
         feature_map = json.load(file)
     print("feature_map: \n", json.dumps(feature_map, indent=4))
 
-    trian_and_valid(data_config=data_config,
-                    feature_map=feature_map,
-                    model_config=model_config,
-                    model_save_dir=model_config["model_save_dir"]
-                    )
+    trian_and_valid(
+        data_config=data_config,
+        feature_map=feature_map,
+        model_config=model_config,
+        model_save_dir=model_config["model_save_dir"]
+    )
 
     
 

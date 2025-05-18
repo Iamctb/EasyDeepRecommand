@@ -3,18 +3,18 @@ import os
 import sys
 import torch
 import torch.nn as nn
-import torch.optim as optim
-import yaml  # 添加yaml包导入
-current_dir = os.path.dirname(__file__)                                 # 获取当前文件所在的目录
+import torch.optim as optim                           
+current_dir = os.path.dirname(__file__)                                 # 获取当前脚本所在的目录
 project_root = os.path.abspath(os.path.join(current_dir, "../../.."))   # 定位项目根目录
 sys.path.append(project_root)                                           # 添加项目根目录到 sys.path
 from DeepRecommand.pytorch.dataloader.Criteo_Dataloader import CriteoDataloader
-from model.WideDeep import WideDeep
+from model.DCNv2 import DCNv2
 from sklearn.metrics import roc_auc_score
 import numpy as np
 from tqdm import tqdm
 from datetime import datetime
 import random
+import yaml
 
 def set_seed(seed):
     """
@@ -46,7 +46,7 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
                                         label_name=feature_map['label'],
                                         batch_size=model_config['batch_size'],
                                         shuffle=False,
-                                        num_workers=0)
+                                        num_workers=0) 
     valid_dataloader = CriteoDataloader(data_path=data_config['valid_data'], 
                                         features_name=feature_map['numeric_feature'] + feature_map['categorical_feature'],
                                         label_name=feature_map['label'],
@@ -55,8 +55,7 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
                                         num_workers=0)
     
 
-    model = WideDeep(feature_map=feature_map,
-                     model_config=model_config).to(device)
+    model = DCNv2(feature_map=feature_map, model_config=model_config).to(device)
 
     if model_config['loss'] == 'bce':
         criterion = nn.BCELoss()
@@ -93,7 +92,7 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
 
                 # 更新进度条
                 pbar.set_postfix(loss=loss.item())
-                
+
                 # 清理缓存
                 torch.cuda.empty_cache()
 
@@ -138,7 +137,6 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
     # 获取当前日期，并在 model_path 下创建日期目录
     current_date = datetime.now().strftime("%Y-%m-%d")
     date_dir = os.path.join(model_save_dir, current_date)
-    print("data_dir: ", date_dir)
     os.makedirs(date_dir, exist_ok=True)
 
     # 保存模型
@@ -150,15 +148,15 @@ def trian_and_valid(data_config, feature_map, model_config, model_save_dir):
 
 if __name__ == '__main__':
     set_seed(2024)                                                              # 固定随机种子，用于代码复现
-
+    
     print("Step1: 获取配置各项配置 ...")
-    # 获取yaml配置文件
+     # 获取yaml配置文件
     data_config_path = os.path.join(current_dir, "config/data_config.yaml")     # 通过相对路径获取数据配置文件
     model_config_path = os.path.join(current_dir, "config/model_config.yaml")   # 通过相对路径获取模型配置文件
     with open(data_config_path, 'r', encoding='utf-8') as file:   
         data_config = yaml.safe_load(file)['Criteo_dataset']                    # 获取Criteo_dataset下的配置
     with open(model_config_path, 'r', encoding='utf-8') as file:
-        model_config = yaml.safe_load(file)['WideDeep']                         # 获取WideDeep下的配置
+        model_config = yaml.safe_load(file)['DCNv2']                              # 获取DCN下的配置
 
     # 获取配置中的路径，和项目路径合并后重新赋值，防止因为路径导致程序出错
     data_config['feature_map'] = project_root + data_config['feature_map']
@@ -175,11 +173,12 @@ if __name__ == '__main__':
         feature_map = json.load(file)
     print("feature_map: \n", json.dumps(feature_map, indent=4))
 
-    trian_and_valid(data_config=data_config,
-                    feature_map=feature_map,
-                    model_config=model_config,
-                    model_save_dir=model_config["model_save_dir"]
-                    )
+    trian_and_valid(
+        data_config=data_config,
+        feature_map=feature_map,
+        model_config=model_config,
+        model_save_dir=model_config["model_save_dir"]
+    )
 
     
 
