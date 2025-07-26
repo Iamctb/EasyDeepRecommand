@@ -57,11 +57,9 @@
 
 | No.  | Publication | Model    | Blog                                                         | Paper                                                        | Version |
 | ---- | ----------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------- |
-| 1    | DLRS'16     | WideDeep | 📝 [白话WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅torch  |
-| 2    | ADKDD'17    | DCN      | 📝 [白话DCN](https://blog.csdn.net/qq_41915623/article/details/145951277?fromshare=blogdetail&sharetype=blogdetail&sharerId=145951277&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅torch  |
-| 3    | WWW'21      | DCV-v2   |                                                              | [DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems](https://arxiv.org/abs/2008.13535), **Google** | ✅torch  |
-
-
+| 1    | DLRS'16     | WideDeep | 📝 [WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅torch  |
+| 2    | ADKDD'17    | DCN      | 📝 [DCN](https://blog.csdn.net/qq_41915623/article/details/145951277?fromshare=blogdetail&sharetype=blogdetail&sharerId=145951277&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅torch  |
+| 3    | WWW'21      | DCV-v2   | 📝 [DCN-v2](https://blog.csdn.net/qq_41915623/article/details/148999994?fromshare=blogdetail&sharetype=blogdetail&sharerId=148999994&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems](https://arxiv.org/abs/2008.13535), **Google** | ✅torch  |
 
 
 ## Dependencies
