@@ -35,10 +35,28 @@
 
 
 ## Development of model
-<div align="center">
-<img src="https://github.com/Iamctb/EasyDeepRecommand/blob/main/Development_of_model.png" alt="Logo" />
-</div>
-(图片展示有水印，望理解，后期会使用markdown语法编辑！)
+```mermaid
+graph LR
+    A[推荐模型] --> B[特征交叉模型]
+    A --> C[多任务模型]
+
+    B --> B1[Wide and Deep DLRS16 谷歌]
+    B1 --> B1a[优点\nWide增强记忆\nDeep增强泛化\n结构简单高效]
+    B1 --> B1b[缺点\n需手工特征交互\n维度上升模型变复杂]
+
+    B --> B2[DCN V1 AKDD17 谷歌]
+    B2 --> B2a[优点\n适合小规模\n逐层特征交叉]
+    B2 --> B2b[缺点\n大规模表达能力有限]
+
+    B --> B3[DCN V2 WWW21 谷歌]
+
+    C --> C1[Shared Bottom 结构]
+    C1 --> C1a[优点\n共享参数降低复杂度\n多任务互相促进]
+    C1 --> C1b[缺点\n负迁移\n跨域表现差]
+
+    C --> C2[MMoE]
+    C --> C3[PLE]
+```
 
 和很多朋友交流发现，我们在读很多论文时，都聚焦于论文中提出的模型本身，而没有关心模型间的因果关系，所以这个 **板块用来介绍模型优缺点和模型间的前后因果关系。**
 
@@ -55,11 +73,12 @@
 
 ## Model_Zoo
 
-| No.  | Publication | Model    | Blog                                                         | Paper                                                        | Version |
-| ---- | ----------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------- |
-| 1    | DLRS'16     | WideDeep | 📝 [WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅torch  |
-| 2    | ADKDD'17    | DCN      | 📝 [DCN](https://blog.csdn.net/qq_41915623/article/details/145951277?fromshare=blogdetail&sharetype=blogdetail&sharerId=145951277&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅torch  |
-| 3    | WWW'21      | DCV-v2   | 📝 [DCN-v2](https://blog.csdn.net/qq_41915623/article/details/148999994?fromshare=blogdetail&sharetype=blogdetail&sharerId=148999994&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems](https://arxiv.org/abs/2008.13535), **Google** | ✅torch  |
+| No.  | Publication | Model    | Blog                                                         | Paper                                                        | Version                                                  |
+| ---- | ----------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------------------- |
+| 1    | DLRS'16     | WideDeep | 📝 [WideDeep](https://blog.csdn.net/qq_41915623/article/details/138839827?fromshare=blogdetail&sharetype=blogdetail&sharerId=138839827&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf), **Google** | ✅torch                                                   |
+| 2    | ADKDD'17    | DCN      | 📝 [DCN](https://blog.csdn.net/qq_41915623/article/details/145951277?fromshare=blogdetail&sharetype=blogdetail&sharerId=145951277&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [Deep & Cross Network for Ad Click Predictions](https://arxiv.org/abs/1708.05123), **Google** | ✅torch                                                   |
+| 3    | WWW'21      | DCV-v2   | 📝 [DCN-v2](https://blog.csdn.net/qq_41915623/article/details/148999994?fromshare=blogdetail&sharetype=blogdetail&sharerId=148999994&sharerefer=PC&sharesource=qq_41915623&sharefrom=from_link) | [DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems](https://arxiv.org/abs/2008.13535), **Google** | ✅torch                                                   |
+| 4    | NeurIPS'23  | TIGER    | 📝 [Tiger](https://blog.csdn.net/qq_41915623/article/details/155646041) | [Recommender Systems with Generative Retrieval](https://arxiv.org/abs/2305.05065), **Google** | [Unofficial Code](https://github.com/XiaoLongtaoo/TIGER) |
 
 
 ## Dependencies
